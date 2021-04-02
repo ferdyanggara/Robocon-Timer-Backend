@@ -9,6 +9,8 @@ const mongoose = require('mongoose')
 const path = require('path')
 const morgan = require('morgan')
 const timerRouter = require('./router/TimerRouter')
+const trialRouter = require('./router/TrialRouter')
+const regularTimerRouter = require('./router/regularTimerRouter')
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(morgan('dev'))
@@ -16,6 +18,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use('/timer', timerRouter)
+app.use('/regularTimer', regularTimerRouter)
+app.use('/trialRouter', trialRouter)
 
 const connectToMongo = async () => {
     try {
