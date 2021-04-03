@@ -8,6 +8,10 @@ const regularTimerSchema = new Schema(
             required: true,
         },
         time: {
+            type: String,
+            required: true,
+        },
+        trial: {
             type: Number,
             required: true,
         },

@@ -28,6 +28,7 @@ exports.resetTrialId = async (req, res) => {
 
 exports.getTrialId = async (req, res) => {
     const allRegularTime = await TrialModel.find()
+    console.log('id: ', allRegularTime)
     res.send(allRegularTime)
 }
 

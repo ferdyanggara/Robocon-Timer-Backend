@@ -6,10 +6,12 @@ exports.addRegularTimeRed = async (req, res) => {
     // const check = await RegularTimer.find({ arrow: req.body.arrow, red: true })
 
     // if (check.length == 0) {
+
     const newRegularTime = new RegularTimer({
         arrow: req.body.arrow,
         time: req.body.time,
         red: true,
+        trial: req.body.trial,
     })
     const result = await newRegularTime.save()
     res.send(result)
@@ -27,6 +29,7 @@ exports.addRegularTimeBlue = async (req, res) => {
         arrow: req.body.arrow,
         time: req.body.time,
         red: false,
+        trial: req.body.trial,
     })
     const result = await newRegularTime.save()
     res.send(result)
