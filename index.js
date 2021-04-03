@@ -11,6 +11,8 @@ const morgan = require('morgan')
 const timerRouter = require('./router/TimerRouter')
 const trialRouter = require('./router/TrialRouter')
 const regularTimerRouter = require('./router/regularTimerRouter')
+const avgTimerRouter = require('./router/averageTimerRouter')
+
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(morgan('dev'))
@@ -20,6 +22,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/timer', timerRouter)
 app.use('/regularTimer', regularTimerRouter)
 app.use('/trialRouter', trialRouter)
+app.use('/avgTimer', avgTimerRouter)
 
 const connectToMongo = async () => {
     try {
