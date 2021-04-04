@@ -13,15 +13,18 @@ exports.getRedAverageTime = async (req, res) => {
             currentArrowId++
             continue
         }
+        console.log("CURRENT ARROW ID ", currentArrowId)
         console.log(allArrowIdTime)
         let totalAverageTime = 0
         allArrowIdTime.map((arrow) => {
-            totalAverageTime += arrow.time
+            totalAverageTime += parseInt(arrow.time)
         })
         redAvgData.push({
             arrowId: currentArrowId.toString(),
-            averageTime: totalAverageTime / allArrowIdTime.length,
+            averageTime: Math.round(totalAverageTime / allArrowIdTime.length),
         })
+        console.log("Total time", totalAverageTime);
+        console.log("avg result", Math.round(totalAverageTime / allArrowIdTime.length));
         currentArrowId++
     }
     res.send(redAvgData)
@@ -43,13 +46,14 @@ exports.getBlueAverageTime = async (req, res) => {
         console.log(allArrowIdTime)
         let totalAverageTime = 0
         allArrowIdTime.map((arrow) => {
-            totalAverageTime += arrow.time
+            totalAverageTime += parseInt(arrow.time)
         })
         blueAvgData.push({
             arrowId: currentArrowId.toString(),
-            averageTime: totalAverageTime / allArrowIdTime.length,
+            averageTime: Math.round(totalAverageTime / allArrowIdTime.length),
         })
         currentArrowId++
     }
+    console.log(blueAvgData)
     res.send(blueAvgData)
 }
