@@ -6,6 +6,8 @@ router.post('/add-regTimer-red', regTimerController.addRegularTimeRed)
 router.post('/add-regTimer-blue', regTimerController.addRegularTimeBlue)
 
 router.get('/all-regTimer-red', regTimerController.allRegularTimeRed)
+router.get('/all-regTimer-red/:id', regTimerController.allRegularTimeRedId)
+router.get('/all-regTimer-blue/:id', regTimerController.allRegularTimeBlueId)
 router.get('/all-regTimer-blue', regTimerController.allRegularTimeBlue)
 router.get('/all-regTimer', regTimerController.allRegularTime)
 

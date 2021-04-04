@@ -70,6 +70,36 @@ exports.allRegularTimeRed = async (req, res) => {
     res.send(processedRegularTime)
 }
 
+exports.allRegularTimeRedId = async (req, res) => {
+    const allRegularTime = await RegularTimer.find({
+        red: true,
+        trial: req.params.id,
+    })
+    console.log('all Regular time: ', allRegularTime)
+    let processedRegularTime = allRegularTime.map((each) => {
+        return { arrow: each.arrow, time: each.time }
+    })
+    processedRegularTime.sort((a, b) => {
+        return a.arrow - b.arrow
+    })
+    res.send(processedRegularTime)
+}
+
+exports.allRegularTimeBlueId = async (req, res) => {
+    const allRegularTime = await RegularTimer.find({
+        red: false,
+        trial: req.params.id,
+    })
+    console.log('all Regular time: ', allRegularTime)
+    let processedRegularTime = allRegularTime.map((each) => {
+        return { arrow: each.arrow, time: each.time }
+    })
+    processedRegularTime.sort((a, b) => {
+        return a.arrow - b.arrow
+    })
+    res.send(processedRegularTime)
+}
+
 exports.allRegularTime = async (req, res) => {
     const allRegularTime = await RegularTimer.find()
     console.log('all Regular time: ', allRegularTime)
